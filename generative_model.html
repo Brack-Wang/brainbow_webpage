@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="description"
+      content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos."
+    />
+    <meta name="keywords" content="Nerfies, D-NeRF, NeRF" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Brainbow Generative Segmentation Model</title>
+
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-E1Z15EF2FG"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || []
+      function gtag() {
+        dataLayer.push(arguments)
+      }
+      gtag('js', new Date())
+
+      gtag('config', 'G-E1Z15EF2FG')
+    </script>
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css" />
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css" />
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css" />
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"
+    />
+    <link rel="stylesheet" href="./static/css/index.css" />
+    <link rel="icon" href="./static/images/favicon.png" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+  </head>
+  <body>
+    <!-- <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a
+          role="button"
+          class="navbar-burger"
+          aria-label="menu"
+          aria-expanded="false"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="navbar-menu">
+        <div class="navbar-start" style="flex-grow: 1; justify-content: center">
+          <a class="navbar-item" href="https://vcg-team.github.io/homepage">
+            <span class="icon">
+              <i class="fas fa-home"></i>
+            </span>
+          </a>
+
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link"> More Research </a>
+            <div class="navbar-dropdown">
+              <a
+                class="navbar-item"
+                href="https://vcg-team.github.io/diffsegmenter-webpage"
+              >
+                DiffSegmenter
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav> -->
+
+
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <!-- 左侧 Logo -->
+        <!-- <a class="navbar-item" href="#">
+          <img src="./static/images/logo.png" alt="Logo" style="max-height: 3rem;" />
+          <span style="font-size: 1.25rem; font-weight: bold; margin-left: 8px;">
+            Cai Lab
+          </span>
+        </a> -->
+    
+        <!-- 移动端汉堡菜单 -->
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+    
+      <div id="navMenu" class="navbar-menu">
+        <div class="navbar-start"></div>
+    
+        <!-- 右侧导航菜单 -->
+        <div class="navbar-end">
+            <a class="navbar-item" href="index.html">Home</a>
+          <!-- <a class="navbar-item" href="#research">Research</a> -->
+          <!-- <a class="navbar-item" href="#publications">Publications</a> -->
+    
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">Resources</a>
+            <div class="navbar-dropdown">
+              <a class="navbar-item" href="https://github.com/Brack-Wang/GenerativeSegment" target="_blank">
+                Code
+              </a>
+              <a class="navbar-item" href="#datasets">Datasets</a>
+              <a class="navbar-item" href="https://www.cai-lab.org/resources/brainbow-analysis" target="_blank">
+                Tools
+              </a>
+              
+            </div>
+          </div>
+    
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">Team</a>
+            <div class="navbar-dropdown">
+              <a class="navbar-item" href="#members">Members</a>
+              <!-- <a class="navbar-item" href="#alumni">Alumni</a> -->
+            </div>
+          </div>
+    
+          <a class="navbar-item" href="./generative_model.html">Generative Model</a>
+
+          <a class="navbar-item" href="#outreach">Segmentation Model         </a>
+          <a class="navbar-item" href="#outreach">Interactive Platform       </a>
+          <!-- <a class="navbar-item" href="#openings">Current Lab Openings</a> -->
+    
+          <!-- 搜索图标 -->
+          <!-- <div class="navbar-item">
+            <a href="#search">
+              <span class="icon">
+                <i class="fas fa-search"></i>
+              </span>
+            </a>
+          </div> -->
+        </div>
+      </div>
+    </nav>
+
+
+
+    <section class="hero" style="
+    background-image: url('./static/images/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    padding: 6rem 0;
+">
+<div class="hero-body">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column has-text-centered">
+        <h1 class="title is-1 publication-title" style="color: white;">
+        Stage 1: Dataset Expantion
+        </h1>
+        <h2>
+            Generative Model
+        </h2>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+
+  <!-- <section class="section">
+    <div class="container">
+      <h1 class="title is-1">Generative Model</h1>
+      <p>
+        This is the Generative Model page. Add your content about the generative model here.
+      </p>
+      <p>
+        You can include text, images, or videos to explain the model.
+      </p>
+    </div>
+  </section> -->
+
+  <img src="./static/images/generative.png" alt="Model Example" style="width: 70%; height: auto; border-radius: 8px;">
+
+
+</body>
+</html>

@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="description"
+      content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos."
+    />
+    <meta name="keywords" content="Nerfies, D-NeRF, NeRF" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Brainbow Generative Segmentation Model</title>
+
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-E1Z15EF2FG"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || []
+      function gtag() {
+        dataLayer.push(arguments)
+      }
+      gtag('js', new Date())
+
+      gtag('config', 'G-E1Z15EF2FG')
+    </script>
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css" />
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css" />
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css" />
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"
+    />
+    <link rel="stylesheet" href="./static/css/index.css" />
+    <link rel="icon" href="./static/images/favicon.png" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+  </head>
+  <body>
+    <!-- <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a
+          role="button"
+          class="navbar-burger"
+          aria-label="menu"
+          aria-expanded="false"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="navbar-menu">
+        <div class="navbar-start" style="flex-grow: 1; justify-content: center">
+          <a class="navbar-item" href="https://vcg-team.github.io/homepage">
+            <span class="icon">
+              <i class="fas fa-home"></i>
+            </span>
+          </a>
+
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link"> More Research </a>
+            <div class="navbar-dropdown">
+              <a
+                class="navbar-item"
+                href="https://vcg-team.github.io/diffsegmenter-webpage"
+              >
+                DiffSegmenter
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav> -->
+
+
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <!-- 左侧 Logo -->
+        <!-- <a class="navbar-item" href="#">
+          <img src="./static/images/logo.png" alt="Logo" style="max-height: 3rem;" />
+          <span style="font-size: 1.25rem; font-weight: bold; margin-left: 8px;">
+            Cai Lab
+          </span>
+        </a> -->
+    
+        <!-- 移动端汉堡菜单 -->
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+    
+      <div id="navMenu" class="navbar-menu">
+        <div class="navbar-start"></div>
+    
+        <!-- 右侧导航菜单 -->
+        <div class="navbar-end">
+          <a class="navbar-item" href="index.html">Home</a>
+          <!-- <a class="navbar-item" href="#research">Research</a> -->
+          <!-- <a class="navbar-item" href="#publications">Publications</a> -->
+    
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">Resources</a>
+            <div class="navbar-dropdown">
+              <a class="navbar-item" href="https://github.com/Brack-Wang/GenerativeSegment" target="_blank">
+                Code
+              </a>
+              <a class="navbar-item" href="#datasets">Datasets</a>
+              <a class="navbar-item" href="https://www.cai-lab.org/resources/brainbow-analysis" target="_blank">
+                Tools
+              </a>
+              
+            </div>
+          </div>
+    
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">Team</a>
+            <div class="navbar-dropdown">
+              <a class="navbar-item" href="#members">Members</a>
+              <!-- <a class="navbar-item" href="#alumni">Alumni</a> -->
+            </div>
+          </div>
+    
+          <a class="navbar-item" href="./generative_model.html">Generative Model</a>
+
+          <a class="navbar-item" href="#outreach">Segmentation Model         </a>
+          <a class="navbar-item" href="#outreach">Interactive Platform       </a>
+          <!-- <a class="navbar-item" href="#openings">Current Lab Openings</a> -->
+    
+          <!-- 搜索图标 -->
+          <!-- <div class="navbar-item">
+            <a href="#search">
+              <span class="icon">
+                <i class="fas fa-search"></i>
+              </span>
+            </a>
+          </div> -->
+        </div>
+      </div>
+    </nav>
+    
+    <section class="hero" style="
+          background-image: url('./static/images/background.jpg');
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+          color: white;
+          padding: 6rem 0;
+      ">
+      <div class="hero-body">
+        <div class="container is-max-desktop">
+          <div class="columns is-centered">
+            <div class="column has-text-centered">
+              <h1 class="title is-1 publication-title" style="color: white;">
+                Brainbow Generative Segmentation Model
+              </h1>
+              <!-- <div class="is-size-5 publication-authors">
+                <span class="author-block">
+                  <a href="https://keunhong.com">Keunhong Park</a
+                  ><sup>1</sup>,</span
+                >
+                <span class="author-block">
+                  <a href="https://utkarshsinha.com">Utkarsh Sinha</a
+                  ><sup>2</sup>,</span
+                >
+                <span class="author-block">
+                  <a href="https://jonbarron.info">Jonathan T. Barron</a
+                  ><sup>2</sup>,
+                </span>
+                <span class="author-block">
+                  <a href="http://sofienbouaziz.com">Sofien Bouaziz</a
+                  ><sup>2</sup>,
+                </span>
+                <span class="author-block">
+                  <a href="https://www.danbgoldman.com">Dan B Goldman</a
+                  ><sup>2</sup>,
+                </span>
+                <span class="author-block">
+                  <a href="https://homes.cs.washington.edu/~seitz/"
+                    >Steven M. Seitz</a
+                  ><sup>1,2</sup>,
+                </span>
+                <span class="author-block">
+                  <a href="http://www.ricardomartinbrualla.com"
+                    >Ricardo Martin-Brualla</a
+                  ><sup>2</sup>
+                </span>
+              </div> -->
+
+              <!-- <div class="is-size-5 publication-authors">
+                <span class="author-block"
+                  ><sup>1</sup>University of Washington,</span
+                >
+                <span class="author-block"><sup>2</sup>Google Research</span>
+              </div> -->
+
+              <!-- <div class="column has-text-centered">
+                <div class="publication-links">
+                  <span class="link-block">
+                    <a
+                      href="https://arxiv.org/pdf/2011.12948"
+                      class="external-link button is-normal is-rounded is-dark"
+                    >
+                      <span class="icon">
+                        <i class="fas fa-file-pdf"></i>
+                      </span>
+                      <span>Paper</span>
+                    </a>
+                  </span>
+                  <span class="link-block">
+                    <a
+                      href="https://arxiv.org/abs/2011.12948"
+                      class="external-link button is-normal is-rounded is-dark"
+                    >
+                      <span class="icon">
+                        <i class="ai ai-arxiv"></i>
+                      </span>
+                      <span>arXiv</span>
+                    </a>
+                  </span>
+                  <span class="link-block">
+                    <a
+                      href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
+                      class="external-link button is-normal is-rounded is-dark"
+                    >
+                      <span class="icon">
+                        <i class="fab fa-youtube"></i>
+                      </span>
+                      <span>Video</span>
+                    </a>
+                  </span>
+                  <span class="link-block">
+                    <a
+                      href="https://github.com/google/nerfies"
+                      class="external-link button is-normal is-rounded is-dark"
+                    >
+                      <span class="icon">
+                        <i class="fab fa-github"></i>
+                      </span>
+                      <span>Code</span>
+                    </a>
+                  </span>
+                  <span class="link-block">
+                    <a
+                      href="https://github.com/google/nerfies/releases/tag/0.1"
+                      class="external-link button is-normal is-rounded is-dark"
+                    >
+                      <span class="icon">
+                        <i class="far fa-images"></i>
+                      </span>
+                      <span>Data</span>
+                    </a>
+                  </span>
+                </div>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- <section class="hero teaser">
+      <div class="container is-max-desktop">
+        <div class="hero-body">
+          <video id="teaser" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/teaser.mp4" type="video/mp4" />
+          </video>
+          <h2 class="subtitle has-text-centered">
+            <span class="dnerf">Nerfies</span> turns selfie videos from your
+            phone into free-viewpoint portraits.
+          </h2>
+        </div>
+      </div>
+    </section> -->
+
+      
+ <!--/ Abstract. -->
+    <section class="section">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3"> Project Overview and Scientific Goals
+            </h2>
+            <div class="content has-text-justified">
+              <p>
+                Understanding how external stimuli influence neural activity remains a major challenge in modern neuroscience. Trillions of interconnected neurons form the basis of human cognition and responses. Advances in microscopy allow detailed observation of single-neuron morphology, but the sheer number and complex distribution of neurons make it difficult to identify which neurons are influenced by specific external conditions, limiting deeper insights into brain function.
+              </p>
+              
+            </div>
+          </div>
+        </div>
+        <!--/ Abstract. -->
+
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <!-- <h2 class="title is-3">Video</h2> -->
+            <div class="publication-video" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; background: #000;">
+              <iframe
+                src="https://www.youtube.com/embed/mDDx8G6HJbk?rel=0&amp;showinfo=0&autoplay=1&mute=1"
+                frameborder="0"
+                allow="autoplay; encrypted-media"
+                allowfullscreen
+                style="
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  width: 100%;
+                  height: 100%;
+                "
+              ></iframe>
+            </div>
+          </div>
+        </div>
+
+
+        <section class="section">
+          <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+              <div class="column is-four-fifths">
+                <div class="content has-text-justified">
+                  
+                  <p>
+                    Bridging the gap between macroscopic brain activity and microscopic neural responses requires a scalable, high-resolution segmentation framework to isolate and track neuron activity under specific stimuli. Medical imaging offer a foundation for such models, but key challenges remain:
+                  </p>
+                  <figure>
+                    <img src="./static/images/challenges.png" alt="Brain Activity" style="width: 100%; height: auto; border-radius: 8px;">
+                    <!-- <figcaption>Figure 1. Example of neuron activity mapping.</figcaption> -->
+                  </figure>
+                 <p>
+                  We have developed a validated automated segmentation framework combining 3 stages including generative modeling, segmentation model, and an interactive refinement platform. The proposed project will build on this foundation and scale it to high-resolution data using Polaris's computational power, enabling deeper insights into neuron activity research.
+                 </p>
+                 <figure>
+                  <img src="./static/images/stages.png" alt="Stages" style="width: 100%; height: auto; border-radius: 8px;">
+                  <!-- <figcaption>Figure 1. Example of neuron activity mapping.</figcaption> -->
+                </figure>
+                </div>
+              </div>
+            </div>
+            <!--/ Abstract. -->
+
+
+    
+        
+    </section>
+
+  
+
+    
+  </body>
+</html>
