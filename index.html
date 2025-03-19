@@ -39,7 +39,7 @@
       href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"
     />
     <link rel="stylesheet" href="./static/css/index.css" />
-    <link rel="icon" href="./static/images/favicon.png" />
+    <link rel="icon" href="./static/images/neuron.png" />
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script defer src="./static/js/fontawesome.all.min.js"></script>
@@ -132,15 +132,15 @@
           <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link">Team</a>
             <div class="navbar-dropdown">
-              <a class="navbar-item" href="#members">Members</a>
+              <a class="navbar-item" href="./members.html">Members</a>
               <!-- <a class="navbar-item" href="#alumni">Alumni</a> -->
             </div>
           </div>
     
           <a class="navbar-item" href="./generative_model.html">Generative Model</a>
 
-          <a class="navbar-item" href="./seg.html">Segmentation Model         </a>
-          <a class="navbar-item" href="#outreach">Interactive Platform       </a>
+          <a class="navbar-item" href="./segmentation_model.html">Segmentation Model         </a>
+          <a class="navbar-item" href="./interactive_platform.html">Interactive Platform       </a>
           <!-- <a class="navbar-item" href="#openings">Current Lab Openings</a> -->
     
           <!-- 搜索图标 -->
@@ -156,19 +156,19 @@
     </nav>
     
     <section class="hero" style="
-          background-image: url('./static/images/background.jpg');
+          background-image: url('./static/images/banner2.jpg');
           background-size: cover;
           background-position: center;
           background-repeat: no-repeat;
           color: white;
-          padding: 6rem 0;
+          padding: 4rem 0;
       ">
       <div class="hero-body">
         <div class="container is-max-desktop">
           <div class="columns is-centered">
             <div class="column has-text-centered">
               <h1 class="title is-1 publication-title" style="color: white;">
-                Brainbow Generative Segmentation Model
+                A Unified Framework for Unsupervised Sparse-to-dense Brain Image Generation and Neural Circuit Reconstruction
               </h1>
               <!-- <div class="is-size-5 publication-authors">
                 <span class="author-block">
@@ -299,7 +299,7 @@
             </h2>
             <div class="content has-text-justified">
               <p>
-                Understanding how external stimuli influence neural activity remains a major challenge in modern neuroscience. Trillions of interconnected neurons form the basis of human cognition and responses. Advances in microscopy allow detailed observation of single-neuron morphology, but the sheer number and complex distribution of neurons make it difficult to identify which neurons are influenced by specific external conditions, limiting deeper insights into brain function.
+                Understanding how external stimuli influence neural activity remains a major challenge in modern neuroscience. Trillions of interconnected neurons form the foundation of human cognition and responses. Advances in microscopy allow detailed observation of single-neuron morphology, but the sheer number and complex distribution of neurons make it difficult to identify which neurons are influenced by specific external conditions. This limitation hinders deeper insights into brain function and the precise mapping of neural circuits
               </p>
               
             </div>
@@ -325,6 +325,9 @@
                 "
               ></iframe>
             </div>
+            <p class="has-text-centered" style="margin-top: 10px; font-size: 1rem; color: #666;">
+              How to identify specific neurons that are influenced by external conditions?
+            </p>
           </div>
         </div>
 
@@ -335,22 +338,35 @@
                 <div class="content has-text-justified">
                   
                   <p>
-                    Bridging the gap between macroscopic brain activity and microscopic neural responses requires a scalable, high-resolution segmentation framework to isolate and track neuron activity under specific stimuli. Medical imaging offer a foundation for such models, but key challenges remain:
+                    Bridging the gap between macroscopic brain activity and microscopic neural responses requires a scalable, high-resolution segmentation framework to isolate and track neuron activity under specific stimuli. Although medical imaging techniques have been improved, challenges remain in terms of computational complexity, data annotation bottlenecks, and data scarcity:
                   </p>
                   <figure>
                     <img src="./static/images/challenges.png" alt="Brain Activity" style="width: 100%; height: auto; border-radius: 8px;">
                     <!-- <figcaption>Figure 1. Example of neuron activity mapping.</figcaption> -->
                   </figure>
-                 <p>
-                  We have developed a validated automated segmentation framework combining 3 stages including generative modeling, segmentation model, and an interactive refinement platform. The proposed project will build on this foundation and scale it to high-resolution data using Polaris's computational power, enabling deeper insights into neuron activity research.
-                 </p>
-                 <figure>
-                  <img src="./static/images/stages.png" alt="Stages" style="width: 100%; height: auto; border-radius: 8px;">
+                  <p>
+                    To address these challenges, we propose <strong>A Unified Framework for Unsupervised Sparse-to-Dense Brain Image Generation and Neural Circuit Reconstruction</strong>. The framework consists of three key stages: 
+                    (1) a <a href="./generative_model.html" target="_blank"><em>Generative Model</em></a> to expand datasets by synthesising large number of neuron images with labels,
+                    (2) a  <a href="./segmentation_model.html" target="_blank"><em>Segmentation Model</em></a> to identify neurons and create coarse segmentation masks, and 
+                    (3) an <a href="./interactive_platform.html" target="_blank"><em>Interactive Platform</em></a>  to enhance segmentation quality through expert feedback, rapidly producing accurate labels and improving the segmentation model through continuous learning.
+                  </p>
+                  
+                
+                <figure>
+                  <img src="./static/images/stages.png" alt="Stages" style="width: 120%; height: auto; border-radius: 8px;">
                   <!-- <figcaption>Figure 1. Example of neuron activity mapping.</figcaption> -->
                 </figure>
-                </div>
+
+                <p>
+                  Our unified framework has demonstrated its effectiveness in synthesizing large datasets from sparse inputs, enabling accurate segmentation on unseen data with varying features. This approach facilitates both the generation of brain images and the segmentation of neurons. Scaling this framework to high-resolution data using Polaris's computational power will enable deeper insights into neural activity and brain function.
+                </p>
+              </div>
               </div>
             </div>
+
+
+
+             
             <!--/ Abstract. -->
 
           </section>

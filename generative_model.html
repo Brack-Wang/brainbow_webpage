@@ -118,10 +118,7 @@
               <a class="navbar-item" href="https://github.com/Brack-Wang/GenerativeSegment" target="_blank">
                 Code
               </a>
-              <a class="navbar-item" href="#datasets">Datasets</a>
-              <a class="navbar-item" href="https://www.cai-lab.org/resources/brainbow-analysis" target="_blank">
-                Tools
-              </a>
+              <a class="navbar-item" href="https://www.cai-lab.org/resources/brainbow-analysis/ntracer">Datasets and Tools</a>
               
             </div>
           </div>
@@ -155,12 +152,12 @@
 
 
     <section class="hero" style="
-    background-image: url('./static/images/background.jpg');
+    background-image: url('./static/images/banner2.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     color: white;
-    padding: 6rem 0;
+    padding: 3rem 0;
 ">
 <div class="hero-body">
   <div class="container is-max-desktop">
@@ -169,7 +166,7 @@
         <h1 class="title is-1 publication-title" style="color: white;">
         Stage 1: Generative Model
         </h1>
-        <h2>
+        <h2 style="font-size: 2rem; ">
             Dataset Expansion
         </h2>
       </div>
@@ -179,21 +176,19 @@
 </section>
 
 
-  <section class="section">
-    <div class="container is-fluid">  
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-full">  
-          <div class="content has-text-justified">
-            <figure>
-              <img src="./static/images/generative.png" alt="Stages" 
-                   style="width: 70%; height: auto; border-radius: 8px;">
-              <figcaption>Generative Model based on the 3D Latent Diffusion Model</figcaption>
-            </figure>
-          </div>
-        </div>
-      </div>
+<section class="hero">
+  <div class="container is-max-desktop">
+    <div class="hero-body has-text-centered">
+      <figure>
+        <img src="./static/images/generative2.png" alt="Stages" 
+             style="width: 100%; height: auto; border-radius: 8px;">
+      </figure>
+      <h2 class="subtitle has-text-centered" style="margin-top: 1rem;">
+        We developed a latent diffusion-based generative model combined with our ZECO Module.
+      </h2>
     </div>
-  </section>
+  </div>
+</section>
 
 
   <section class="hero teaser">
@@ -202,8 +197,8 @@
         <video id="teaser" autoplay muted loop playsinline height="100%">
           <source src="./static/videos/synthesis_data.mp4" type="video/mp4" />
         </video>
-        <h2 class="subtitle has-text-centered">
-          <!-- <span class="dnerf">Nerfies</span>  -->
+        <h2 class="subtitle has-text-centered" style="margin-top: 1rem;">
+          With sparse labeled data for training, our generative model generates 1,000 synthetic images that capture both the morphology and spatial distribution of neurons, guided by segmentation patterns.
         </h2>
       </div>
     </div>

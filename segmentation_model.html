@@ -139,8 +139,8 @@
     
           <a class="navbar-item" href="./generative_model.html">Generative Model</a>
 
-          <a class="navbar-item" href="./seg.html">Segmentation Model         </a>
-          <a class="navbar-item" href="#outreach">Interactive Platform       </a>
+          <a class="navbar-item" href="./segmentation_model.html">Segmentation Model         </a>
+          <a class="navbar-item" href="./interactive_platform.html">Interactive Platform       </a>
           <!-- <a class="navbar-item" href="#openings">Current Lab Openings</a> -->
     
           <!-- 搜索图标 -->
@@ -158,12 +158,12 @@
 
 
     <section class="hero" style="
-    background-image: url('./static/images/background.jpg');
+    background-image: url('./static/images/banner2.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     color: white;
-    padding: 6rem 0;
+    padding: 3rem 0;
 ">
 <div class="hero-body">
   <div class="container is-max-desktop">
@@ -172,7 +172,7 @@
         <h1 class="title is-1 publication-title" style="color: white;">
         Stage 2: Segmentation Model
         </h1>
-        <h2>
+        <h2 style="font-size: 2rem;">
             Coarse Mask
         </h2>
       </div>
@@ -182,21 +182,20 @@
 </section>
 
 
-  <section class="section">
-    <div class="container is-fluid">  
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-full">  
-          <div class="content has-text-justified">
-            <figure>
-              <img src="./static/images/segmentation_model.png" alt="Stages" 
-                   style="width: 70%; height: auto; border-radius: 8px;">
-              <figcaption>Segmentation Model</figcaption>
-            </figure>
-          </div>
-        </div>
-      </div>
+<section class="hero">
+  <div class="container is-max-desktop">
+    <div class="hero-body has-text-centered">
+      <figure>
+        <img src="./static/images/segmentation_model.png" alt="Stages" 
+             style="width: 100%; height: auto; border-radius: 8px;">
+      </figure>
+      <h2 class="subtitle has-text-centered" style="margin-top: 1rem;">
+        We introduced a combined strategy that integrates fine-tuning a foundation model on our synthetic dataset and a non-learning method to focus on the interesting areas, enabling high-quality segmentation masks on unseen data.
+
+      </h2>
     </div>
-  </section>
+  </div>
+</section>
 
 
   <section class="hero teaser">
@@ -205,8 +204,8 @@
         <video id="teaser" autoplay muted loop playsinline height="100%">
           <source src="./static/videos/segmentation.mp4" type="video/mp4" />
         </video>
-        <h2 class="subtitle has-text-centered">
-          <!-- <span class="dnerf">Nerfies</span>  -->
+        <h2 class="subtitle has-text-centered" style="margin-top: 1rem;">
+          We evaluated our segmentation model on out-of-domain data, achieving promising and accurate segmentation results with minimal artifacts.
         </h2>
       </div>
     </div>
