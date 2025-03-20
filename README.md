@@ -1,14 +1,9 @@
-# paper-webpage-template
+# Project Webpage
 
-This is an easy-to-use template for creating a webpage for an academic paper.
+This is an webpage for the project "A Unified Framework for Unsupervised Sparse-to-dense Brain Image Generation and Neural Circuit Reconstruction"
 
 # Acknowledgements
 
 This webpage template is adapted from [Nerfies website](https://nerfies.github.io).
-
-# License
-
-<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
-
 
 python -m http.server
