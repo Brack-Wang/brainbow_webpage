@@ -6,4 +6,3 @@ This is an webpage for the project "A Unified Framework for Unsupervised Sparse-
 
 This webpage template is adapted from [Nerfies website](https://nerfies.github.io).
 
-python -m http.server
